@@ -1,0 +1,15 @@
+
+{% block content %}
+<h1>All Books</h1>
+<ul>
+
+{% for book in books %}
+    <li><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a> by {{ book.author }} ({{ book.publisher }} - {{ book.publication_date|date:"F Y" }})</li>
+{% empty %}
+    <li>No books available.</li>
+
+{% endfor %}
+</ul>
+<button> <a href="{% url 'book_create' %}" class="btn btn-primary">Add Book</a></button> 
+
+{% endblock content %}
